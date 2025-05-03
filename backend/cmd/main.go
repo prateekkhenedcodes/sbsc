@@ -23,7 +23,10 @@ func main() {
 		log.Fatalf("could not create girls table: %v", err)
 	}
 
-	r.GET("/healthz", handlers.Healthz)
+	api := r.Group("/api")
+	{
+		api.GET("/healthz", handlers.Healthz)
+	}
 
 	log.Printf("Starting the sever on port: %v", cfg.Port)
 	if err := r.Run(cfg.Port); err != nil {
