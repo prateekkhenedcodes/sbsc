@@ -2,10 +2,10 @@ package main
 
 import (
 	"log"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/prateekkhenedcodes/sbsc/internal/config"
+	"github.com/prateekkhenedcodes/sbsc/internal/handlers"
 	"github.com/prateekkhenedcodes/sbsc/internal/storage/schema"
 )
 
@@ -23,12 +23,10 @@ func main() {
 		log.Fatalf("could not create girls table: %v", err)
 	}
 
-	r.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{
-			"message": "homepage for now",
-		})
-	})
+	r.GET("/healthz", handlers.Healthz)
 
 	log.Printf("Starting the sever on port: %v", cfg.Port)
-	r.Run(cfg.Port)
+	if err := r.Run(cfg.Port); err != nil {
+		log.Fatalf("failed to run the server on port: %v, error is: %v", cfg.Port, err)
+	}
 }
