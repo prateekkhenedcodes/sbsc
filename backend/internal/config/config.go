@@ -15,7 +15,7 @@ type Config struct {
 }
 
 func Load() (Config, error) {
-	err := godotenv.Load("../../.env")
+	err := godotenv.Load("../.env")
 	if err != nil {
 		return Config{}, fmt.Errorf("could not load the env file")
 	}
@@ -26,7 +26,7 @@ func Load() (Config, error) {
 		return Config{}, fmt.Errorf("PORT in .env is empty ")
 	}
 
-	db, err := sql.Open("sqlite3", "./sbsc.sqlite")
+	db, err := sql.Open("sqlite3", "..//sbsc.sqlite")
 	if err != nil {
 		return Config{}, err
 	}
