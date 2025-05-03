@@ -1,25 +1,38 @@
 package config
 
 import (
+	"database/sql"
+	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
+	_ "github.com/mattn/go-sqlite3"
 )
 
-type config struct {
+type Config struct {
 	Port string
+	Db   *sql.DB
 }
 
-func Load() config {
-	godotenv.Load("./backend/.env")
+func Load() (Config, error) {
+	err := godotenv.Load("../../.env")
+	if err != nil {
+		return Config{}, fmt.Errorf("could not load the env file")
+	}
 
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		port = ":8080"
+		return Config{}, fmt.Errorf("PORT in .env is empty ")
 	}
 
-	return config{
-		Port: port,
+	db, err := sql.Open("sqlite3", "./sbsc.sqlite")
+	if err != nil {
+		return Config{}, err
 	}
+
+	return Config{
+		Port: port,
+		Db:   db,
+	}, nil
 }
