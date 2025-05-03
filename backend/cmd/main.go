@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -30,8 +29,6 @@ func main() {
 		})
 	})
 
-	port := cfg.Port
-	fmt.Print(port)
-
-	r.Run(port)
+	log.Printf("Starting the sever on port: %v", cfg.Port)
+	r.Run(cfg.Port)
 }

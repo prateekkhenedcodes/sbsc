@@ -26,7 +26,7 @@ func Load() (Config, error) {
 		return Config{}, fmt.Errorf("PORT in .env is empty ")
 	}
 
-	db, err := sql.Open("sqlite3", "..//sbsc.sqlite")
+	db, err := sql.Open("sqlite3", "../sbsc.sqlite")
 	if err != nil {
 		return Config{}, err
 	}
