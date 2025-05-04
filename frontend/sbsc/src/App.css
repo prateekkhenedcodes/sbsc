@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'SugarPie';
+  src: url('./fonts/SugarPie.woff2') format('woff2'),
+       url('./fonts/SugarPie.woff') format('woff'),
+       url('./fonts/SugarPie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;

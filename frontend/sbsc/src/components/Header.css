@@ -2,24 +2,43 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2e234a;
-  color: white;
-  padding: 1rem 2rem;
+  background-color: white; /* white background */
+  color: #000;
+  padding: 1.5rem 3rem;
   font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding-bottom: 0rem;
+  padding-top: 0.5rem;
 }
 
 .logo {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: black;
+}
+
+.logo img{
+  width: 150px;
+  height: auto;
+  margin-left: 25%;
 }
 
 .nav-links a {
-  color: #ffd700;
-  margin-left: 1rem;
+  color: black;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-left: 0;           /* No margin on the first link */
+  margin-right: 5.5rem;     /* Add space after each link */
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.nav-links a:last-child {
+  margin-right: 0;          /* No extra space after the last link */
 }
 
 .nav-links a:hover {
+  color: #ffd700;
   text-decoration: underline;
 }
+

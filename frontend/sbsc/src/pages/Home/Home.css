@@ -1,19 +1,29 @@
 .hero {
   background: linear-gradient(135deg, #e7e6e8 0%, #f7f5f8 100%);
   min-height: 90vh;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  background: #fff; /* solid white */
+  min-height: 90vh;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  padding-top: 1rem;
+
 }
 
 .hero-content {
+  display: block;
   text-align: center;
   color: white;
   z-index: 1;
   max-width: 800px;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .hero h1 {
@@ -22,7 +32,7 @@
   letter-spacing: 3px;
   text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
   margin-bottom: 1.5rem;
-  color: #f8d90f;
+  color: #000000;
 }
 
 .hero p {
@@ -82,4 +92,44 @@
     width: 100%;
     text-align: center;
   }
+}
+.sub-header {
+  background-color: #2d2147;
+  color: #fbb03b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  -moz-box-align: center;
+}
+
+.sub-text {
+  flex: 1;
+  padding: 0.2em 0px 0.05em;
+  transform: scale(0.75, 1) translateX(-16.6666%);
+  width: 133.333%;
+  font-weight: 500;
+  font-family: 'SugarPie', cursive, sans-serif; /* Add this line */
+}
+
+
+.social-icons a {
+  color: white;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #fbb03b;
 }
