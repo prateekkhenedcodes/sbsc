@@ -4,7 +4,7 @@ import './ComicCard.css';
 
 const ComicCard = ({ imageSrc, likes }) => (
   <div className="comic-card">
-    <img src={imageSrc} alt="Comic" />
+    <img src={`${import.meta.env.BASE_URL}${imageSrc}`} alt="Comic" />
     <LikeButton initialLikes={likes} />
   </div>
 );
