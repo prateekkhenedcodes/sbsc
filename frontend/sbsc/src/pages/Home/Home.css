@@ -1,0 +1,85 @@
+.hero {
+  background: linear-gradient(135deg, #e7e6e8 0%, #f7f5f8 100%);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 4.5rem;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  margin-bottom: 1.5rem;
+  color: #f8d90f;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  background: #3ec70b;
+  color: white;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border: 3px solid #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: #32a308;
+}
+
+.cta-button:nth-child(2) {
+  background: #ff7f50;
+}
+
+.cta-button:nth-child(2):hover {
+  background: #ff6b3a;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}
