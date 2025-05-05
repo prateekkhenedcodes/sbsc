@@ -49,7 +49,7 @@ func Upload(ctx *gin.Context) {
 
 	c := context.Background()
 
-	pathToKey := "/home/suresh/workspace/github.com/prateekkhenedcodes/sbsc/backend/key.json"
+	pathToKey := "/home/suresh/workspace/github.com/prateekkhenedcodes/sbsc/backend/keys.json"
 
 	storageClient, err := storage.NewClient(c, option.WithCredentialsFile(pathToKey))
 	if err != nil {
