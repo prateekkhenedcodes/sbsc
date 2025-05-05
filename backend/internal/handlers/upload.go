@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"context"
+	"database/sql"
+	"encoding/json"
 	"io"
 	"net/http"
 	"path/filepath"
@@ -12,12 +14,24 @@ import (
 	"google.golang.org/api/option"
 )
 
-func Upload(ctx *gin.Context) {
+type Response struct {
+	ID          string `json:"id"`
+	CreatedAt   string `json:"created_at"`
+	UpdatedAt   string `json:"updated_at"`
+	Name        string `json:"name"`
+	PassOutYear int    `json:"passout_year"`
+	Gender      string `json:"gender"`
+	Branch      string `json:"branch"`
+	Description string `json:"description"`
+}
+
+func Upload(ctx *gin.Context, db *sql.DB) {
+
 	r := ctx.Request
 	r.Body = http.MaxBytesReader(ctx.Writer, r.Body, 10<<23)
 
 	const maxMemory = 10 << 20
-	err := ctx.Request.ParseMultipartForm(maxMemory)
+	err := r.ParseMultipartForm(maxMemory)
 	if err != nil {
 		ctx.JSON(http.StatusUnauthorized, gin.H{
 			"error": "could not parse the multipart form" + err.Error(),
@@ -33,6 +47,23 @@ func Upload(ctx *gin.Context) {
 		return
 	}
 	defer file.Close()
+
+	jsonData := r.FormValue("data")
+	if jsonData == "" {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"error": "No JSON data found",
+		})
+		return
+	}
+
+	var responseData Response
+	err = json.Unmarshal([]byte(jsonData), &responseData)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"error": "Failed to unmarshal JSON: " + err.Error(),
+		})
+		return
+	}
 
 	mediaType := header.Header.Get("Content-Type")
 
@@ -82,6 +113,13 @@ func Upload(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": "file uploaded successfully",
 		"path":    fileURL,
+		"data":    responseData,
 	})
 
+}
+
+func UploadHandler(db *sql.DB) gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		Upload(ctx, db)
+	}
 }

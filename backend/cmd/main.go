@@ -26,7 +26,7 @@ func main() {
 	api := r.Group("/api")
 	{
 		api.GET("/healthz", handlers.Healthz)
-		api.POST("/upload", handlers.Upload)
+		api.POST("/upload", handlers.UploadHandler(cfg.Db))
 	}
 
 	log.Printf("Starting the sever on port: %v", cfg.Port)
