@@ -6,9 +6,31 @@ export default function Upload() {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle image submission logic
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('image', image);
+
+    try {
+      const response = await fetch('http://localhost:8080/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert('Upload successful!');
+        setName('');
+        setDescription('');
+        setImage(null);
+      } else {
+        alert('Upload failed.');
+      }
+    } catch (error) {
+      alert('An error occurred: ' + error.message);
+    }
   };
 
   return (
