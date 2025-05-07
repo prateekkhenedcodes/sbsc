@@ -118,6 +118,42 @@
   outline: none;
 }
 
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fafbfc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222;
+}
+
+.form-group select:focus {
+  border-color: #3ec70b;
+  box-shadow: 0 0 0 2px rgba(62, 199, 11, 0.10);
+  outline: none;
+  background: #fff;
+}
+
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fafbfc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222;
+}
+
+.form-group input[type="number"]:focus {
+  border-color: #3ec70b;
+  box-shadow: 0 0 0 2px rgba(62, 199, 11, 0.10);
+  outline: none;
+  background: #fff;
+}
+
 
 
 @media (max-width: 600px) {
