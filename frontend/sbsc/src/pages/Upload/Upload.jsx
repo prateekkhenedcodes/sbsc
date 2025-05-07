@@ -57,16 +57,20 @@ export default function Upload() {
         </div>
         <div className="form-group">
           <label>Passout Year:</label>
-          <input
-            type="number"
-            min="1950"
-            max={new Date().getFullYear() + 5}
+          <select
             value={passoutYear}
             onChange={e => setPassoutYear(e.target.value)}
-            placeholder="e.g., 2024"
             required
-          />
+          >
+            <option value="">Select Year</option>
+            {[2025, 2026, 2027, 2028, 2029, 2030].map(year => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
         </div>
+
         <div className="form-group">
           <label>Gender:</label>
           <select
