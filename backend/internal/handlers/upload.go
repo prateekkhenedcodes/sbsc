@@ -80,7 +80,7 @@ func Upload(ctx *gin.Context, db *sql.DB) {
 
 	c := context.Background()
 
-	pathToKey := "/home/suresh/workspace/github.com/prateekkhenedcodes/sbsc/backend/keys.json"
+	pathToKey := "../../keys.json"
 
 	storageClient, err := storage.NewClient(c, option.WithCredentialsFile(pathToKey))
 	if err != nil {
