@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 	"github.com/prateekkhenedcodes/sbsc/internal/config"
 	"github.com/prateekkhenedcodes/sbsc/internal/handlers"
 	"github.com/prateekkhenedcodes/sbsc/internal/storage/schema"
@@ -12,6 +13,7 @@ import (
 func main() {
 
 	r := gin.Default()
+	r.Use(cors.Default())
 
 	cfg, err := config.Load()
 	if err != nil {
