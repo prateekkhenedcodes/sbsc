@@ -12,22 +12,28 @@ export default function Upload() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const jsonData = JSON.stringify({
+      name,
+      passout_year: parseInt(passoutYear),
+      gender,
+      branch,
+      description
+    });
+
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('passout_year', passoutYear);
-    formData.append('gender', gender);
-    formData.append('branch', branch);
-    formData.append('description', description);
     formData.append('image', image);
+    formData.append('data', jsonData);
 
     try {
       const response = await fetch('http://localhost:8080/api/upload', {
         method: 'POST',
-        body: formData,
+        body: formData
       });
 
       if (response.ok) {
-        alert('Upload successful!');
+        const result = await response.json();
+        alert('Upload successful!\n' + result.message);
+        console.log(result);
         setName('');
         setPassoutYear('');
         setGender('');
@@ -35,7 +41,8 @@ export default function Upload() {
         setDescription('');
         setImage(null);
       } else {
-        alert('Upload failed.');
+        const err = await response.text();
+        alert('Upload failed: ' + err);
       }
     } catch (error) {
       alert('An error occurred: ' + error.message);
@@ -48,36 +55,20 @@ export default function Upload() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-          />
+          <input type="text" value={name} onChange={e => setName(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Passout Year:</label>
-          <select
-            value={passoutYear}
-            onChange={e => setPassoutYear(e.target.value)}
-            required
-          >
+          <select value={passoutYear} onChange={e => setPassoutYear(e.target.value)} required>
             <option value="">Select Year</option>
-            {[2025, 2026, 2027, 2028, 2029, 2030].map(year => (
-              <option key={year} value={year}>
-                {year}
-              </option>
+            {[2024, 2025, 2026, 2027, 2028].map(year => (
+              <option key={year} value={year}>{year}</option>
             ))}
           </select>
         </div>
-
         <div className="form-group">
           <label>Gender:</label>
-          <select
-            value={gender}
-            onChange={e => setGender(e.target.value)}
-            required
-          >
+          <select value={gender} onChange={e => setGender(e.target.value)} required>
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -86,30 +77,15 @@ export default function Upload() {
         </div>
         <div className="form-group">
           <label>Branch:</label>
-          <input
-            type="text"
-            value={branch}
-            onChange={e => setBranch(e.target.value)}
-            placeholder="e.g., Computer Science"
-            required
-          />
+          <input type="text" value={branch} onChange={e => setBranch(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            required
-          />
+          <textarea value={description} onChange={e => setDescription(e.target.value)} required />
         </div>
         <div className="form-group">
           <label>Upload Image:</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={e => setImage(e.target.files[0])}
-            required
-          />
+          <input type="file" accept="image/*" onChange={e => setImage(e.target.files[0])} required />
         </div>
         <button type="submit" className="submit-button">Submit</button>
       </form>
