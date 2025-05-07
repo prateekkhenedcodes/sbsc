@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  padding-top: 1rem;
+  padding-top: 0rem;
 
 }
 
@@ -144,9 +144,9 @@
 
 .top-image-wrapper {
   width: 320px;
-  height: 320px;
+  height: 400px;
   margin: 0 auto 1rem auto;
-  border-radius: 50%;
+  border-radius: 10%;
   overflow: hidden;
   border: 6px solid #3ec70b; /* green border */
   box-shadow: 0 4px 15px rgba(62, 199, 11, 0.4);
@@ -161,7 +161,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 .top-label {
