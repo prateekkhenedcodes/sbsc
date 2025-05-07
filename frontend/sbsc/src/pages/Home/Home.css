@@ -133,3 +133,42 @@
 .social-icons a:hover {
   color: #fbb03b;
 }
+
+.top-container {
+  margin-top: 4rem;
+  text-align: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-image-wrapper {
+  width: 320px;
+  height: 320px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #3ec70b; /* green border */
+  box-shadow: 0 4px 15px rgba(62, 199, 11, 0.4);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.top-label {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  color: #3ec70b;
+  letter-spacing: 1.2px;
+  margin: 0;
+}
+
